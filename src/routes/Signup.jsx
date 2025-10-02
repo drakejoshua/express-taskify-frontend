@@ -146,8 +146,10 @@
                         )
                     }
                 } else {
-                    // if not ok, show error toast with status code and text
-                    showToast(`Error signing you up: ${ signupResp.status } ${ signupResp.statusText }`, 'error')
+                    // if ok, parse response json
+                    const respJson = await signupResp.json()
+
+                    showToast(`Error signing you up: ${ respJson.error.message }`, 'error')
                 }
             } catch ( err ) {
                 // since signup fetch failed, show error toast with error message
@@ -233,7 +235,7 @@
                                             className="w-full px-3 py-2 rounded bg-gray-800 text-white"
                                             type="text"
                                             name="username"
-                                            value={form.name}
+                                            value={form.username}
                                             onChange={handleChange}
                                             required
                                             autoFocus
