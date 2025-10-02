@@ -1,4 +1,4 @@
-import { createHashRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import Home from './routes/Home'
 import Signup from './routes/Signup'
 import Signin from './routes/Signin'
@@ -10,7 +10,7 @@ import ResetPassword from './routes/ResetPassword'
 import ProtectedRoute from './components/ProtectedRoute'
 import TourComponent from './components/TourComponent'
 
-export const routes = createHashRouter([
+export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Home/>

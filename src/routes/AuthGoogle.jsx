@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom'
 import { useToastProvider } from '../providers/ToastProvider'
@@ -8,6 +8,8 @@ function AuthGoogle() {
     const navigateTo = useNavigate()
 
     const { showToast } = useToastProvider()
+
+    let renderCount = useRef(0)
 
     const { setUser } = useUserProvider()
 
@@ -54,7 +56,13 @@ function AuthGoogle() {
     }
 
     useEffect(function() {
-        retrieveAndSaveAuthUser()
+        if ( renderCount.current < 1 ) {
+            retrieveAndSaveAuthUser()
+        }
+
+        return function() {
+            renderCount.current += 1
+        }
     }, [])
 
     return (

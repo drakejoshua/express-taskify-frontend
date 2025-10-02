@@ -96,7 +96,7 @@ function Signin() {
         const frontendURL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5173'
 
         // encode redirect URL to be used in the password reset link
-        const redirectURL = encodeURIComponent(`${frontendURL}/#/auth/reset-password/`)
+        const redirectURL = encodeURIComponent(`${frontendURL}/auth/reset-password/`)
 
         try {
             // send the password reset link request to the server
@@ -153,7 +153,7 @@ function Signin() {
         const frontendURL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5173'
 
         // encode frontend redirect URL after google auth
-        const googleAuthRedirect = encodeURI(`${ frontendURL }/#/auth/google`)
+        const googleAuthRedirect = encodeURI(`${ frontendURL }/auth/google`)
 
         // get google details by redirecting to backend URL
         window.open(`${ backendURL }/auth/google?redirect=${ googleAuthRedirect }`, "_self")
@@ -169,7 +169,7 @@ function Signin() {
         const frontendURL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5173'
 
         // encode email confirmation redirect URL for query param
-        const emailRedirectURL = encodeURIComponent(`${ frontendURL }/#/magiclink/`)
+        const emailRedirectURL = encodeURIComponent(`${ frontendURL }/magiclink/`)
 
         // send magic link signup request
         try {
