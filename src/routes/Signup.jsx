@@ -292,7 +292,6 @@
                                             name="photo"
                                             accept="image/*"
                                             onChange={handleChange}
-                                            required
                                         />
                                     </Form.Control>
                                     {form.photo && (
