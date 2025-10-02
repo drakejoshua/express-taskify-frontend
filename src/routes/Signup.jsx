@@ -101,8 +101,11 @@
             // create signup form data in order to allow direct photo upload
             const signupFormData = new FormData()
 
+            // get frontend URL from env variables
+            const frontendURL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5173'
+
             // encode email confirmation redirect URL for query param
-            const emailRedirectURL = encodeURIComponent(`${ window.location.origin }/verify-email/`)
+            const emailRedirectURL = encodeURIComponent(`${frontendURL}/verify-email/`)
 
             // append all signup form fields to form data
             signupFormData.append('name', form.username);
@@ -156,8 +159,11 @@
         }
 
         async function handleGoogleSignup() {
+            // get fronend URL from env variables
+            const frontendURL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5173'
+
             // encode frontend redirect URL after google auth
-            const googleAuthRedirect = encodeURI(`${ window.location.origin }/auth/google/`)
+            const googleAuthRedirect = encodeURI(`${ frontendURL }/#/auth/google`)
 
             // get google details by redirecting to backend URL
             window.open(`${ backendURL }/auth/google?redirect=${ googleAuthRedirect }`, "_self")
@@ -169,8 +175,11 @@
                 return showToast("Please enter a valid email to use magiclink signup", "error")
             }
 
+            // get frontend URL from env variables
+            const frontendURL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5173'
+
             // encode email confirmation redirect URL for query param
-            const emailRedirectURL = encodeURIComponent(`${ window.location.origin }/magiclink/`)
+            const emailRedirectURL = encodeURIComponent(`${ frontendURL }/#/magiclink/`)
 
             // send magic link signup request
             try {
