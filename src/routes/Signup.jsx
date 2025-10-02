@@ -8,7 +8,7 @@
     import {
         Form 
     } from "radix-ui";
-    import { Link } from "react-router-dom";
+    import { Link, useNavigate } from "react-router-dom";
     import { useState } from "react";
     import { useToastProvider } from "../providers/ToastProvider.jsx";
     import { useDialogProvider } from "../providers/DialogProvider.jsx";
@@ -71,6 +71,8 @@
             password: "",
         });
 
+        const navigateTo = useNavigate()
+
         const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:7000'
 
         function handleChange(e) {
@@ -132,15 +134,15 @@
                     } else {
                         const dialogId = showDialog(
                             "Signup Successful", 
-                            "Please check your email for confirmation", 
+                            "Please sign in using your newly created account.", 
                             <>
                                 <button className="mt-6 w-full py-2 px-5 bg-amber-500 rounded-md font-semibold text-black hover:bg-amber-600 transition"
                                     onClick={ () => { 
                                         hideDialog( dialogId )
-                                        window.open( 'https://mail.google.com', '_blank' )
+                                        navigateTo('/signin')
                                     } }
                                 >
-                                    Open Email App
+                                    Go To Login
                                 </button>
                             </>
                         )
